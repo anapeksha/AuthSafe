@@ -1,0 +1,27 @@
+{
+  "name": "AuthFlow",
+  "version": "0.0.1",
+  "description": "SSO application",
+  "main": "dist/index.js",
+  "author": "Anapeksha Mukherjee",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+  },
+  "dependencies": {
+    "@prisma/client": "5.4.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.18",
+    "@types/node": "^20.8.3",
+    "concurrently": "^8.2.1",
+    "nodemon": "^3.0.1",
+    "prisma": "^5.4.1",
+    "typescript": "^5.2.2"
+  }
+}
