@@ -2,14 +2,14 @@
   "name": "AuthFlow",
   "version": "0.0.1",
   "description": "SSO application",
-  "main": "dist/index.js",
+  "main": "src/app.ts",
   "author": "Anapeksha Mukherjee",
   "license": "MIT",
   "private": false,
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "start": "node dist/app.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/app.js\""
   },
   "dependencies": {
     "@prisma/client": "5.4.1",
