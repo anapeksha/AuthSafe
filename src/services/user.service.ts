@@ -1,3 +1,4 @@
+import argon2 from "argon2";
 import { prisma } from "../config";
 import { IUser } from "../types";
 
@@ -7,7 +8,7 @@ const userService = {
       const user = await prisma.user.create({
         data: {
           email: userData.email,
-          password: userData.password,
+          password: await argon2.hash(userData.password),
         },
       });
       return user;
