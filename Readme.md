@@ -1,6 +1,6 @@
-# AuthFlow
+# AuthSafe
 
-🚀 Connect with users effortlessly, secure their data with ease, and elevate your application's security to new heights. AuthFlow provides a seamless authentication service to handle all your security needs.
+🚀 Connect with users effortlessly, secure their data with ease, and elevate your application's security to new heights. AuthSafe provides a seamless authentication service to handle all your security needs.
 
 ## Table of Contents
 
