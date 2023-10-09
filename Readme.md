@@ -54,4 +54,4 @@ yarn build
 
 ## License
 
-This project is licensed under the [MIT License](link-to-license-file).
+This project is distributed under the GPL 3.0 License. See `LICENSE` for more information.

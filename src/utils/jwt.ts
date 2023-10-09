@@ -28,6 +28,7 @@ const signRefreshToken = (token: string) => {
   } catch (error) {
     if (error) throw new Error();
   }
+  return null;
 };
 
 const verifyToken = (token: string) => {
