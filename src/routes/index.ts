@@ -1,3 +1,4 @@
-import router from "./user.route";
+import authRoute from "./auth.route";
+import userRoute from "./user.route";
 
-export { router as userRoute };
+export { authRoute, userRoute };
