@@ -79,6 +79,7 @@
     /* Type Checking */
     "strict": true /* Enable all strict type-checking options. */,
     "noImplicitReturns": true /* Enable error reporting for codepaths that do not explicitly return in a function. */,
+    "noImplicitAny": false,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   }
 }
