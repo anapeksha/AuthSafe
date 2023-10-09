@@ -1,7 +1,7 @@
 import argon2 from "argon2";
-import jwt from "jsonwebtoken";
-import { prisma } from "../config";
+import { constants, prisma } from "../config";
 import { IUser } from "../types";
+import { signAccessToken } from "../utils/jwt";
 
 const authService = {
   login: async (userData: IUser) => {
@@ -11,30 +11,24 @@ const authService = {
           email: userData.email,
         },
       });
-      if (user && (await argon2.verify(user.password, userData.password)))
-        return user;
-      else return null;
+      if (user && (await argon2.verify(user.password, userData.password))) {
+        const token = signAccessToken(user);
+        if (token) {
+          const session = await prisma.session.create({
+            data: {
+              token: token,
+              userId: user.id,
+            },
+          });
+          if (session) {
+            return { userId: user.id, token: session.token };
+          } else throw new Error(constants.errors.SessionCreationError);
+        } else throw new Error(constants.errors.TokenGenerationError);
+      } else throw new Error(constants.errors.UnauthorizedError);
     } catch (error) {
-      throw error;
+      throw new Error("any");
     }
   },
-  signToken: (userData: IUser) => {
-    const payload = {
-      sub: userData.id,
-      email: userData.email,
-    };
-    const token = jwt.sign(payload, "hello", {
-      expiresIn: "24h",
-    });
-    return token;
-  },
-  verifyToken: (token: string) => {
-    jwt.verify(token, "hello", (error, decoded) => {
-      if (error) {
-        return null;
-      } else {
-        return decoded;
-      }
-    });
-  },
 };
+
+export default authService;
