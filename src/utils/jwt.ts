@@ -9,7 +9,7 @@ const signAccessToken = (userData: IUser) => {
     sub: userData.id,
     email: userData.email,
   };
-  const token = jwt.sign(payload, "hello", {
+  const token = jwt.sign(payload, jwtSecret!, {
     expiresIn: "15m",
   });
   return token;
@@ -18,7 +18,7 @@ const signRefreshToken = (token: string) => {
   try {
     const accessTokenDecoded = verifyToken(token);
     if (accessTokenDecoded) {
-      const refreshedToken = jwt.sign(accessTokenDecoded, "hello", {
+      const refreshedToken = jwt.sign(accessTokenDecoded, jwtSecret!, {
         expiresIn: "7d",
       });
       if (refreshedToken) {
@@ -33,7 +33,7 @@ const signRefreshToken = (token: string) => {
 
 const verifyToken = (token: string) => {
   let decodedToken: string | JwtPayload | undefined;
-  jwt.verify(token, "hello", (error, decoded) => {
+  jwt.verify(token, jwtSecret!, (error, decoded) => {
     if (error) {
       throw error;
     } else {
