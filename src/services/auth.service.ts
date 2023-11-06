@@ -21,7 +21,7 @@ const authService = {
             },
           });
           if (session) {
-            return { userId: user.id, token: session.token };
+            return token;
           } else throw new Error(constants.errors.SessionCreationError);
         } else throw new Error(constants.errors.TokenGenerationError);
       } else throw new Error(constants.errors.UnauthorizedError);
