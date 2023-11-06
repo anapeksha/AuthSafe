@@ -9,7 +9,10 @@ const authController = {
       if (!token) {
         return res.status(500).json({ error: "Internal Server Error" });
       } else {
-        return res.json(token);
+        return res.cookie("token", token, {
+          maxAge: 999,
+          httpOnly: true,
+        });
       }
     } catch (error: any) {
       if (error.message === constants.errors.UnauthorizedError) {

@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from "express";
 import { constants } from "./config";
 import { authRoute, userRoute } from "./routes";
 
-const port = constants.PORT;
+const port = constants.PORT || 8080;
 const apiVersion = constants.API_VERSION;
 const app: Express = express();
 
