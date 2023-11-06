@@ -31,5 +31,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{secrets.DOCKERHUB_USERNAME}}/pawrtner:latest
-            ${{secrets.DOCKERHUB_USERNAME}}/pawrtner:${{env.TAG}}
+            ${{secrets.DOCKERHUB_USERNAME}}/authsafe:latest
+            ${{secrets.DOCKERHUB_USERNAME}}/authsafe:${{env.TAG}}
