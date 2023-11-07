@@ -11,7 +11,7 @@ const authService = {
           email: userData.email,
         },
       });
-      if (user && (await argon2.verify(user.password, userData.password))) {
+      if (user && (await argon2.verify(user.password, userData.password!))) {
         const token = signAccessToken(user);
         if (token) {
           const session = await prisma.session.create({

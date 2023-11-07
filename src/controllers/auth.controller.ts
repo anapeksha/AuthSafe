@@ -7,12 +7,14 @@ const authController = {
     try {
       const token = await authService.login(req.body.user);
       if (!token) {
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ error: "Malformed Token" });
       } else {
-        return res.cookie("token", token, {
-          maxAge: 999,
+        res.cookie("token", token, {
+          maxAge: 999999,
           httpOnly: true,
+          secure: false,
         });
+        return res.status(200).json({ message: "Logged in" });
       }
     } catch (error: any) {
       if (error.message === constants.errors.UnauthorizedError) {

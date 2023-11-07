@@ -7,8 +7,9 @@ const userService = {
     try {
       const user = await prisma.user.create({
         data: {
-          email: userData.email,
-          password: await argon2.hash(userData.password),
+          name: userData.name,
+          email: userData.email!,
+          password: await argon2.hash(userData.password!),
         },
       });
       return user;
