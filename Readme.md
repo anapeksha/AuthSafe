@@ -38,6 +38,20 @@ npm build
 yarn build
 ```
 
+### Docker Usage
+
+Pull the docker image
+
+```bash
+docker pull anapeksha/authsafe
+```
+
+Run the image
+
+```bash
+docker run -p 8080:8080 -e 'DATABASE_URL=postgresql://xxx' -e 'JWT_SECRET=xxxxxxxxxx' -v ${HOME}/logs:/usr/authsafe/app/logs
+```
+
 ## Features
 
 1. Seamless Authentication
