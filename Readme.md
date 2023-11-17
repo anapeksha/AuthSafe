@@ -9,7 +9,6 @@
 - [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Installation
 

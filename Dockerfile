@@ -7,8 +7,7 @@ COPY prisma/ ./
 COPY yarn.lock ./
 COPY . .
 
-RUN yarn install 
-RUN yarn prisma generate
+RUN yarn install
 RUN yarn build
 
 EXPOSE 8080

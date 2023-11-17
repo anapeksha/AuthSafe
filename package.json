@@ -1,12 +1,13 @@
 {
-  "name": "AuthFlow",
+  "name": "authsafe",
   "version": "0.0.1",
-  "description": "SSO application",
+  "description": "Authentication application",
   "main": "src/app.ts",
   "author": "Anapeksha Mukherjee",
   "license": "MIT",
   "private": false,
   "scripts": {
+    "prebuild": "prisma generate",
     "build": "cross-env NODE_ENV=production npx tsc",
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts"

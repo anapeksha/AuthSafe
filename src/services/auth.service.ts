@@ -21,12 +21,23 @@ const authService = {
             },
           });
           if (session) {
-            return token;
+            return { id: session.id, token: token };
           } else throw new Error(constants.errors.SessionCreationError);
         } else throw new Error(constants.errors.TokenGenerationError);
       } else throw new Error(constants.errors.UnauthorizedError);
     } catch (error) {
       throw new Error("any");
+    }
+  },
+  logout: async (sessionId: number) => {
+    try {
+      await prisma.session.delete({
+        where: {
+          id: sessionId,
+        },
+      });
+    } catch (error) {
+      throw error;
     }
   },
 };
