@@ -2,7 +2,7 @@ import { config } from "dotenv";
 config();
 
 const PORT = process.env.PORT;
-const API_VERSION = process.env.API_VERSION;
+const API_VERSION = "v1";
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const errors = {
