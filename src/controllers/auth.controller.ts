@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { constants } from "../config";
 import { authService } from "../services";
+import { logger } from "../utils";
 import { verifyToken } from "../utils/jwt";
 
 const authController = {
@@ -15,9 +16,11 @@ const authController = {
           httpOnly: true,
           secure: false,
         });
+        logger.info(`User created: ${req.body.user.email}`);
         return res.status(200).json({ message: "Logged in" });
       }
     } catch (error: any) {
+      logger.error(error);
       if (error.message === constants.errors.UnauthorizedError) {
         return res.status(401).json({ error: "Unauthorized" });
       } else if (error.message === constants.errors.SessionCreationError) {
@@ -39,9 +42,10 @@ const authController = {
           res.clearCookie("token");
         }
       }
+      logger.info(`User logged out: ${authCookie.id}`);
       res.status(200).json({ message: "Logged out" });
     } catch (error) {
-      console.log(error);
+      logger.error(error);
       res.status(500).json({ error: "Internal Server Error" });
     }
   },

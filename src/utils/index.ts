@@ -1,3 +1,4 @@
 import * as jwt from "./jwt";
+import logger from "./logger.util";
 
-export { jwt };
+export { jwt, logger };
