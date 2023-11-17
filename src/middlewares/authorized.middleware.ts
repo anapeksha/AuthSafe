@@ -8,9 +8,10 @@ const authorizedMiddleware = (
 ) => {
   const authCookie = req.cookies.token;
   if (authCookie) {
-    const token = verifyToken(authCookie);
+    const token = verifyToken(authCookie.token);
     if (token) {
-      next(token);
+      res.locals.userId = token.sub;
+      next();
     } else {
       res.status(401).send({ error: "Unauthorised" });
     }
