@@ -46,7 +46,30 @@ const userService = {
           email: userData.email,
           password: userData.password,
         },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
       });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  },
+  deleteUser: async (userId: string) => {
+    try {
+      const user = await prisma.user.delete({
+        where: {
+          id: userId,
+        },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      });
+      return user;
     } catch (error) {
       throw error;
     }
