@@ -7,8 +7,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prebuild": "prisma migrate deploy",
+    "prebuild": "prisma generate",
     "build": "cross-env NODE_ENV=production npx tsc",
+    "prestart": "prisma migrate deploy",
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts"
   },
