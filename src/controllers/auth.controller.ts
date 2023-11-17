@@ -12,9 +12,9 @@ const authController = {
         return res.status(500).json({ error: "Malformed Token" });
       } else {
         res.cookie("token", token, {
-          maxAge: 999999,
+          maxAge: 604800000,
           httpOnly: true,
-          secure: false,
+          secure: process.env.NODE_ENV === "production",
         });
         logger.info(`User logged in: ${req.body.user.email}`);
         return res.status(200).json({ message: "Logged in" });
