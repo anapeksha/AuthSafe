@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { userService } from "../services";
+import { logger } from "../utils";
 
 const userController = {
   getUser: async (req: Request, res: Response) => {
@@ -8,16 +9,20 @@ const userController = {
       if (!user) {
         return res.status(500).json({ error: "Internal Server Error" });
       }
+      logger.info(`User fetched: ${user.email}`);
       return res.json(user);
     } catch (error) {
+      logger.error(error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   },
   createUser: async (req: Request, res: Response) => {
     try {
       const user = await userService.createUser(req.body.user);
+      logger.info(`User created: ${user.email}`);
       return res.json(user);
     } catch (error) {
+      logger.error(error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   },
@@ -30,8 +35,10 @@ const userController = {
       if (!user) {
         return res.status(500).json({ error: "Internal Server Error" });
       }
+      logger.info(`User updated: ${user.email}`);
       return res.json(user);
     } catch (error) {
+      logger.error(error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   },
@@ -41,8 +48,10 @@ const userController = {
       if (!user) {
         return res.status(500).json({ error: "Internal Server Error" });
       }
+      logger.info(`User deleted: ${user.email}`);
       return res.json(user);
     } catch (error) {
+      logger.error(error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   },
