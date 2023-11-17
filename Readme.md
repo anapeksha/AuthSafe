@@ -1,5 +1,7 @@
 # AuthSafe
 
+![Docker CI](https://github.com/anapeksha/authsafe/actions/workflows/docker-integration.yml/badge.svg?branch=main)
+
 🚀 Connect with users effortlessly, secure their data with ease, and elevate your application's security to new heights. AuthSafe provides a seamless authentication service to handle all your security needs.
 
 ## Table of Contents
@@ -42,6 +44,18 @@ yarn build
 2. JSON Web Token (JWT) integration
 3. Built with Expressjs, lightweight
 4. Scalable
+5. Log maintenance system with Winston
+
+## Endpoints
+
+| Endpoint       | Method   | Description         | Example request                                                                                           | Example response                                                                                                           |
+| -------------- | -------- | ------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `/auth/login`  | `POST`   | Login               | `POST /auth/login` `{"user":  {  "email":  "anapeksha.mukherjee@gmail.com",  "password":  "7965PPO4"  }}` | `{"message":"Logged in"}`                                                                                                  |
+| `/auth/logout` | `POST`   | Logout              | `POST /auth/logout`                                                                                       | `{"message":"Logged out"}`                                                                                                 |
+| `/user`        | `GET`    | Get current user.   | `GET /user`                                                                                               | `{"id":"e53c4e44-65f5-4aa7-9cc3-758ac82be182","name":"Anapeksha Mukherjee","email":  "anapeksha.mukherjee@gmail.com"}`     |
+| `/user/create` | `POST`   | Create new user     | `POST /user/create` `{"user":  {  "email":  "anapeksha.mukherjee@gmail.com",  "password":  "123456"  }}`  | `{"user":  {  "email":  "anapeksha.mukherjee@gmail.com",  "password":  "7965PPO4"  }}`                                     |
+| `/user/update` | `PUT`    | Update current user | `PUT /user/update` `{"user":  {"name":  "Anapeksha Mukherjee"}}`                                          | `{"id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "name": "Anapeksha Mukherjee", "email":  "anapeksha.mukherjee@gmail.com"}` |
+| `/user/delete` | `DELETE` | Delete current user | `DELETE /user/delete`                                                                                     | `{"id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "name": "Anapeksha Mukherjee", "email":  "anapeksha.mukherjee@gmail.com"}` |
 
 ## Contributing
 
