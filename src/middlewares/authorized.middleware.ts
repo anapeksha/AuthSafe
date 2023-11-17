@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { logger } from "../utils";
 import { verifyToken } from "../utils/jwt";
 
 const authorizedMiddleware = (
@@ -13,9 +14,11 @@ const authorizedMiddleware = (
       res.locals.userId = token.sub;
       next();
     } else {
+      logger.error("Unauthorised");
       res.status(401).send({ error: "Unauthorised" });
     }
   } else {
+    logger.error("Unauthorised");
     res.status(401).send({ error: "Unauthorised" });
   }
 };

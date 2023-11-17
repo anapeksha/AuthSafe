@@ -16,7 +16,7 @@ const authController = {
           httpOnly: true,
           secure: false,
         });
-        logger.info(`User created: ${req.body.user.email}`);
+        logger.info(`User logged in: ${req.body.user.email}`);
         return res.status(200).json({ message: "Logged in" });
       }
     } catch (error: any) {
