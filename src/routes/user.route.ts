@@ -4,8 +4,9 @@ import { authorizedMiddleware } from "../middlewares";
 
 const router: Router = express.Router();
 
-router.get("/users", authorizedMiddleware, userController.getAllUsers);
-router.get("/users/:id", authorizedMiddleware, userController.getUserByID);
-router.post("/users/create", userController.createUser);
+router.post("/user/create", userController.createUser);
+router.get("/user/:id", authorizedMiddleware, userController.getUser);
+router.put("/user/update", authorizedMiddleware);
+router.delete("/user/delete", authorizedMiddleware);
 
 export default router;

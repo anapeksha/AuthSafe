@@ -1,19 +1,11 @@
 import { Request, Response } from "express";
+import { JwtPayload } from "jsonwebtoken";
 import { userService } from "../services";
 
 const userController = {
-  getAllUsers: async (req: Request, res: Response) => {
+  getUser: async (req: Request, res: Response, token: string | JwtPayload) => {
     try {
-      const users = await userService.getAllUsers();
-      return res.json(users);
-    } catch (error) {
-      console.error("Error fetching users:", error);
-      return res.status(500).json({ error: "Internal Server Error" });
-    }
-  },
-  getUserByID: async (req: Request, res: Response) => {
-    try {
-      const user = await userService.getUserById(req.params.id);
+      const user = await userService.getUser(token.sub as string);
       if (!user) {
         return res.status(500).json({ error: "Internal Server Error" });
       }
