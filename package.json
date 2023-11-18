@@ -1,6 +1,6 @@
 {
   "name": "authsafe",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Authentication application",
   "main": "src/app.ts",
   "author": "Anapeksha Mukherjee",
