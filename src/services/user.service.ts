@@ -44,7 +44,6 @@ const userService = {
         data: {
           name: userData.name,
           email: userData.email,
-          password: userData.password,
         },
         select: {
           id: true,
