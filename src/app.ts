@@ -2,7 +2,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { Express, Request, Response } from "express";
 import { constants } from "./config";
-import { authRoute, userRoute } from "./routes";
+import { authRoute, profileRoute, userRoute } from "./routes";
 
 const port = constants.PORT || 8080;
 const apiVersion = constants.API_VERSION;
@@ -15,6 +15,7 @@ app.use(cors());
 
 app.use(`/api/${apiVersion}`, userRoute);
 app.use(`/api/${apiVersion}`, authRoute);
+app.use(`/api/${apiVersion}`, profileRoute);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World");

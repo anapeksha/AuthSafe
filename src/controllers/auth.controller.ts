@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import { constants } from "../config";
 import { authService } from "../services";
-import { logger } from "../utils";
-import { verifyToken } from "../utils/jwt";
+import { jwt, logger } from "../utils";
 
 const authController = {
   login: async (req: Request, res: Response) => {
@@ -36,7 +35,7 @@ const authController = {
     try {
       const authCookie = req.cookies.token;
       if (authCookie) {
-        const token = verifyToken(authCookie.token);
+        const token = jwt.verifyToken(authCookie.token);
         if (token) {
           await authService.logout(authCookie.id);
           res.clearCookie("token");
