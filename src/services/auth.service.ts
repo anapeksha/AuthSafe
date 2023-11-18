@@ -1,7 +1,7 @@
 import argon2 from "argon2";
 import { constants, prisma } from "../config";
 import { IUser } from "../types";
-import { signToken } from "../utils/jwt.util";
+import { jwt } from "../utils";
 
 const authService = {
   login: async (userData: IUser) => {
@@ -12,7 +12,7 @@ const authService = {
         },
       });
       if (user && (await argon2.verify(user.password, userData.password!))) {
-        const token = signToken(user);
+        const token = jwt.signToken(user);
         if (token) {
           const session = await prisma.session.create({
             data: {

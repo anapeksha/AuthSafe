@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { prisma } from "../config";
-import { logger } from "../utils";
-import { verifyToken } from "../utils/jwt.util";
+import { jwt, logger } from "../utils";
 
 const isExpired = (now: Date, expires: Date) => {
   if (now >= expires) return true;
@@ -34,7 +33,7 @@ const authorizedMiddleware = async (
         logger.error("Session Expired");
         res.status(401).send({ error: "Session Expired" });
       } else {
-        const token = verifyToken(authCookie.token);
+        const token = jwt.verifyToken(authCookie.token);
         if (token) {
           res.locals.userId = token.sub;
           next();
