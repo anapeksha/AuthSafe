@@ -4,31 +4,15 @@ import { IUser } from "../types";
 
 const jwtSecret = constants.JWT_SECRET;
 
-const signAccessToken = (userData: IUser) => {
+const signToken = (userData: IUser) => {
   const payload = {
     sub: userData.id,
     email: userData.email,
   };
   const token = jwt.sign(payload, jwtSecret!, {
-    expiresIn: "15m",
+    expiresIn: "7d",
   });
   return token;
-};
-const signRefreshToken = (token: string) => {
-  try {
-    const accessTokenDecoded = verifyToken(token);
-    if (accessTokenDecoded) {
-      const refreshedToken = jwt.sign(accessTokenDecoded, jwtSecret!, {
-        expiresIn: "7d",
-      });
-      if (refreshedToken) {
-        return refreshedToken;
-      } else throw new Error();
-    } else throw new Error();
-  } catch (error) {
-    if (error) throw new Error();
-  }
-  return null;
 };
 
 const verifyToken = (token: string) => {
@@ -43,4 +27,4 @@ const verifyToken = (token: string) => {
   return decodedToken;
 };
 
-export { signAccessToken, signRefreshToken, verifyToken };
+export { signToken, verifyToken };
