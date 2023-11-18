@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { constants } from "../config";
 import { authService } from "../services";
 import { logger } from "../utils";
-import { verifyToken } from "../utils/jwt";
+import { verifyToken } from "../utils/jwt.util";
 
 const authController = {
   login: async (req: Request, res: Response) => {
