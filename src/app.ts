@@ -4,7 +4,7 @@ import express, { Express, Request, Response } from "express";
 import { constants } from "./config";
 import { authRoute, profileRoute, userRoute } from "./routes";
 
-const port = constants.PORT || 8080;
+const port = 8080;
 const apiVersion = constants.API_VERSION;
 const app: Express = express();
 
