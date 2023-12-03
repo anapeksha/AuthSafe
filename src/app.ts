@@ -1,8 +1,9 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { Express, Request, Response } from "express";
-import { constants } from "./config";
+import { constants, prisma } from "./config";
 import { authRoute, profileRoute, userRoute } from "./routes";
+import { logger } from "./utils";
 
 const port = 8080;
 const apiVersion = constants.API_VERSION;
@@ -23,4 +24,10 @@ app.get("/", (req: Request, res: Response) => {
 
 app.listen(port, () => {
   console.log(`Running at ${port}`);
+});
+
+process.on("SIGINT", function () {
+  prisma.$disconnect();
+  logger.info("Graceful shutdown triggered");
+  process.exit(0);
 });
