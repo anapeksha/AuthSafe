@@ -14,7 +14,6 @@ const profileController = {
       }
       logger.info(`Password updated: ${user.email}`);
       return res.json(user);
-      return res.json(user);
     } catch (error) {
       logger.error(error);
       return res.status(500).json({ error: "Internal Server Error" });
