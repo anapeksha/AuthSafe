@@ -1,4 +1,4 @@
-FROM node:lts-slim
+FROM node:lts
 
 WORKDIR /usr/authsafe/app
 
