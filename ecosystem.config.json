@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "AuthSafe",
+      "script": "dist/app.js",
+      "exec_mode": "cluster",
+      "instances": 1,
+      "error_file": "logs/errors/internal-errors.log",
+      "merge_logs": true,
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "max_memory_restart": "2G",
+      "max_restarts": "5"
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 import { config } from "dotenv";
 config();
 
-const PORT = process.env.PORT;
 const API_VERSION = "v1";
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -11,4 +10,4 @@ const errors = {
   UnauthorizedError: "UNAUTHORIZED_ERROR",
 };
 
-export { API_VERSION, JWT_SECRET, PORT, errors };
+export { API_VERSION, JWT_SECRET, errors };

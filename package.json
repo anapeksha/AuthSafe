@@ -1,16 +1,20 @@
 {
   "name": "authsafe",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Authentication application",
   "main": "src/app.ts",
   "author": "Anapeksha Mukherjee",
   "license": "MIT",
-  "private": false,
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anapeksha/AuthSafe.git"
+  },
   "scripts": {
     "prebuild": "prisma generate",
     "build": "tsc",
     "prestart": "prisma migrate deploy",
-    "start": "cross-env NODE_ENV=production pm2-runtime dist/app.js",
+    "start": "cross-env NODE_ENV=production pm2-runtime ecosystem.config.json",
     "dev": "cross-env NODE_ENV=development nodemon src/app.ts"
   },
   "dependencies": {
