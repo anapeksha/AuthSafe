@@ -3,8 +3,12 @@ from datetime import datetime
 from os import environ
 
 class Backup:
+    __backupHost = environ.get('BACKUP_HOST')
+    __backupUser = environ.get('BACKUP_USER')
+    __backupPwd = environ.get('BACKUP_PWD')
+
     def __init__(self):
-        self.__connection = Connection(environ.get('BACKUP_HOST'), user=environ.get('BACKUP_USER'), connect_kwargs={"password": environ.get('BACKUP_PWD')})
+        self.__connection = Connection(self.__backupHost, user=self.__backupUser, connect_kwargs={"password": self.__backupPwd})
 
     def archive(self, toCompress=None, fileName=None):
         self.__connection.run(f"tar -cJf {fileName}.tar.xz {toCompress}", hide=True)
