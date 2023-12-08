@@ -14,7 +14,8 @@
     "prebuild": "prisma generate",
     "build": "tsc",
     "prestart": "prisma migrate deploy",
-    "start": "cross-env NODE_ENV=production pm2-runtime ecosystem.config.json",
+    "start:container": "cross-env NODE_ENV=production pm2-runtime ecosystem.config.json",
+    "start": "cross-env NODE_ENV=production pm2 ecosystem.config.json",
     "dev": "cross-env NODE_ENV=development nodemon src/app.ts"
   },
   "dependencies": {
