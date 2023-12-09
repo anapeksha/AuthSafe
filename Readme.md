@@ -62,15 +62,15 @@ docker run -p 8080:8080 -e 'DATABASE_URL=postgresql://xxx' -e 'JWT_SECRET=xxxxxx
 
 ## Endpoints
 
-| Endpoint                   | Method   | Description         | Example request                                                                                     | Example response                                                                                       |
-| -------------------------- | -------- | ------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `/auth/login`              | `POST`   | Login               | `**POST** /auth/login` `{"user":  {  "email":  "someone@example.com",  "password":  "12345678"  }}` | `{"message":"Logged in"}`                                                                              |
-| `/auth/logout`             | `POST`   | Logout              | `**POST** /auth/logout`                                                                             | `{"message":"Logged out"}`                                                                             |
-| `/user`                    | `GET`    | Get current user.   | `**GET** /user`                                                                                     | `{"id":"e53c4e44-65f5-4aa7-9cc3-758ac82be182","name":"John Doe","email":  "john.doe@example.com"}`     |
-| `/user/create`             | `POST`   | Create new user     | `**POST** /user/create` `{"user":  {  "email":  "someone@example.com"  }}`                          | `{"user":  {  "email":  "someone-specific@example.com"}}`                                              |
-| `/user/update`             | `PUT`    | Update current user | `**PUT** /user/update` `{"user":  {"name":  "John Dow"}}`                                           | `{"id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "name": "John Doe", "email":  "john.doe@example.com"}` |
-| `/user/delete`             | `DELETE` | Delete current user | `**DELETE** /user/delete`                                                                           | `{"id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "name": "John Doe", "email":  "john.doe@example.com"}` |
-| `/profile/change-password` | `PUT`    | Change password     | `**PUT** /profile/change-password` `{"user":  {  "password":  "123456"  }}`                         | `{"user":  {  "id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "email":  "john.doe@example.com" }}`       |
+| Endpoint                   | Method   | Description         | Example request                                                                                 | Example response                                                                                       |
+| -------------------------- | -------- | ------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `/auth/login`              | `POST`   | Login               | `POST /auth/login` `{"user":  {  "email":  "someone@example.com",  "password":  "12345678"  }}` | `{"message":"Logged in"}`                                                                              |
+| `/auth/logout`             | `POST`   | Logout              | `POST /auth/logout`                                                                             | `{"message":"Logged out"}`                                                                             |
+| `/user`                    | `GET`    | Get current user.   | `GET /user`                                                                                     | `{"id":"e53c4e44-65f5-4aa7-9cc3-758ac82be182","name":"John Doe","email":  "john.doe@example.com"}`     |
+| `/user/create`             | `POST`   | Create new user     | `POST /user/create` `{"user":  {  "email":  "someone@example.com"  }}`                          | `{"user":  {  "email":  "someone-specific@example.com"}}`                                              |
+| `/user/update`             | `PUT`    | Update current user | `PUT /user/update` `{"user":  {"name":  "John Dow"}}`                                           | `{"id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "name": "John Doe", "email":  "john.doe@example.com"}` |
+| `/user/delete`             | `DELETE` | Delete current user | `DELETE /user/delete`                                                                           | `{"id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "name": "John Doe", "email":  "john.doe@example.com"}` |
+| `/profile/change-password` | `PUT`    | Change password     | `PUT /profile/change-password` `{"user":  {  "password":  "123456"  }}`                         | `{"user":  {  "id": "e53c4e44-65f5-4aa7-9cc3-758ac82be182", "email":  "john.doe@example.com" }}`       |
 
 ## Contributing
 
