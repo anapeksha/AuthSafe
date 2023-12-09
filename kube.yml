@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2023-12-03T06:06:08Z"
+  labels:
+    app: authsafe-container
+  name: authsafe-container
+spec:
+  containers:
+    - args:
+        - yarn
+        - start
+      image: docker.io/anapeksha/authsafe:latest
+      name: authsafe-container
+      env:
+        - name: DATABASE_URL
+          value: "XXXXX"
+        - name: JWT_SECRET
+          value: "XXXXX"
+      ports:
+        - containerPort: 8080
+          hostPort: 8080
+      securityContext:
+        capabilities:
+          drop:
+            - CAP_MKNOD
+            - CAP_NET_RAW
+            - CAP_AUDIT_WRITE
+      tty: true
+      volumeMounts:
+        - mountPath: /usr/authsafe/app/logs
+          name: volume-mount
+  volumes:
+    - hostPath:
+        path: /home/anapeksha/.local/share
+        type: Directory
+      name: volume-mount
