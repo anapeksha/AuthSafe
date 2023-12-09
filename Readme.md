@@ -49,7 +49,7 @@ docker pull anapeksha/authsafe
 Run the image
 
 ```bash
-docker run -p 8080:8080 -e 'DATABASE_URL=postgresql://xxx' -e 'JWT_SECRET=xxxxxxxxxx' -v ${HOME}/logs:/usr/authsafe/app/logs
+docker run -p 8080:8080 -e 'DATABASE_URL=postgresql://xxx' -e 'JWT_SECRET=xxxxxxxxxx' -v ${HOME}/logs:/usr/authsafe/app/logs anapeksha/authsafe
 ```
 
 ## Features
@@ -59,8 +59,6 @@ docker run -p 8080:8080 -e 'DATABASE_URL=postgresql://xxx' -e 'JWT_SECRET=xxxxxx
 3. Built with Expressjs, lightweight
 4. Scalable
 5. Log maintenance system with Winston
-
-## Endpoints
 
 ## Endpoints
 
