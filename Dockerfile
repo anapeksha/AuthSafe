@@ -12,6 +12,7 @@ RUN yarn build
 COPY dist/ ./
 
 RUN rm -rf node_modules
+RUN rm -rf src
 
 ENV NODE_ENV=production
 RUN yarn install && yarn cache clean
