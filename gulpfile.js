@@ -21,7 +21,7 @@ task("prisma", shell.task(["prisma generate"]));
 task("transpile", (cb) => {
   const tsProject = ts.createProject("tsconfig.json");
   src("src/**/*").pipe(tsProject()).js.pipe(dest("dist"));
-  console.info("Project transpiled");
+  console.log("Project transpiled successfully");
   cb();
 });
 
