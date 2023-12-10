@@ -6,16 +6,13 @@ COPY package*.json yarn.lock ./
 COPY prisma/ ./
 COPY gulpfile.js ./
 
-RUN yarn install
-RUN yarn build
+RUN yarn install && yarn build
 
-COPY dist/ ./
+COPY . .
 
-RUN rm -rf node_modules
-RUN rm -rf src
+RUN rm -rf node_modules src
 
-ENV NODE_ENV=production
-RUN yarn install && yarn cache clean
+RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 EXPOSE 8080
 
