@@ -25,4 +25,11 @@ task("transpile", (cb) => {
   cb();
 });
 
-task("build", series("prisma", "transpile"));
+task(
+  "install-production-dep",
+  shell.task([
+    "yarn install --production --frozen-lockfile && yarn cache clean",
+  ])
+);
+
+task("build", series("prisma", "transpile", "install-production-dep"));
