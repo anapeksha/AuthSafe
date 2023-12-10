@@ -4,12 +4,12 @@ WORKDIR /usr/authsafe/app
 
 COPY package*.json yarn.lock ./
 COPY prisma/ ./
+COPY gulpfile.js ./
 
-RUN yarn add global gulp-cli
 RUN yarn install
-RUN gulp build
+RUN yarn build
 
-COPY dist .
+COPY dist/ ./
 
 RUN rm -rf node_modules
 
