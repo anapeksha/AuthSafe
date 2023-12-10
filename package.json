@@ -11,6 +11,7 @@
     "url": "https://github.com/anapeksha/AuthSafe.git"
   },
   "scripts": {
+    "clean": "gulp clean",
     "prebuild": "prisma generate",
     "build": "tsc",
     "prestart": "prisma migrate deploy",
@@ -37,10 +38,10 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.8.3",
     "cross-env": "^7.0.3",
-    "del": "^7.1.0",
     "gulp": "^4.0.2",
     "nodemon": "^3.0.1",
     "prisma": "^5.7.0",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
