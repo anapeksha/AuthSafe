@@ -2,9 +2,8 @@ FROM node:lts-alpine
 
 WORKDIR /usr/authsafe/app
 
-COPY package*.json yarn.lock ./
+COPY package*.json yarn.lock gulpfile.js ./
 COPY prisma/ ./
-COPY gulpfile.js ./
 
 RUN yarn install && yarn build
 
