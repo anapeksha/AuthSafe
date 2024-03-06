@@ -25,6 +25,6 @@ task("transpile", (cb) => {
   cb();
 });
 
-task("install-production-dep", shell.task(["npm install --omit=dev"]));
+task("install-production-dep", shell.task(["npm ci --only=production"]));
 
 task("build", series("prisma", "transpile", "install-production-dep"));
