@@ -16,19 +16,6 @@ task("clean", async () => {
   }
 });
 
-task("delete-nodeModules", async () => {
-  try {
-    const deleted = await rimraf(["node_modules"]);
-    if (deleted) {
-      console.log("Cleaned node_modules/");
-    } else {
-      console.log("Not Cleaned");
-    }
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 task("prisma", shell.task(["prisma generate"]));
 
 task("transpile", (cb) => {
@@ -40,7 +27,4 @@ task("transpile", (cb) => {
 
 task("install-production-dep", shell.task(["npm ci --only=production"]));
 
-task(
-  "build",
-  series("prisma", "transpile", "delete-nodeModules", "install-production-dep")
-);
+task("build", series("prisma", "transpile", "install-production-dep"));
