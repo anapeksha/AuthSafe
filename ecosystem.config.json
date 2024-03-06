@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "AuthSafe",
-      "script": "dist/app.js",
+      "script": "build/app.js",
       "exec_mode": "cluster",
       "instances": 1,
       "error_file": "logs/errors/internal-errors.log",

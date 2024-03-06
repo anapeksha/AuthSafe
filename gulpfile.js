@@ -5,7 +5,7 @@ const ts = require("gulp-typescript");
 
 task("clean", async () => {
   try {
-    const deleted = await rimraf(["logs", "dist"]);
+    const deleted = await rimraf(["logs", "build"]);
     if (deleted) {
       console.log("Cleaned");
     } else {
@@ -20,16 +20,11 @@ task("prisma", shell.task(["prisma generate"]));
 
 task("transpile", (cb) => {
   const tsProject = ts.createProject("tsconfig.json");
-  src("src/**/*").pipe(tsProject()).js.pipe(dest("dist"));
+  src("src/**/*").pipe(tsProject()).js.pipe(dest("build"));
   console.log("Project transpiled successfully");
   cb();
 });
 
-task(
-  "install-production-dep",
-  shell.task([
-    "yarn install --production --frozen-lockfile && yarn cache clean",
-  ])
-);
+task("install-production-dep", shell.task(["npm ci --only=production"]));
 
 task("build", series("prisma", "transpile", "install-production-dep"));
