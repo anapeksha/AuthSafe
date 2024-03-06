@@ -12,4 +12,4 @@ RUN rm -rf src/
 
 EXPOSE 8080
 
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
