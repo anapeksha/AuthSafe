@@ -7,6 +7,8 @@ COPY prisma/ ./
 
 RUN yarn install && yarn build
 
+COPY dist/ ./
+
 COPY . .
 
 EXPOSE 8080
